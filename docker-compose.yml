@@ -13,7 +13,8 @@ services:
       - django
 
   django:
-    image: "khushbooshah20/notes-app:latest"
+    build:
+     context: .
     container_name: "django_cont"
     command: sh -c " sleep 10 && python manage.py migrate --no-input && gunicorn notesapp.wsgi --bind 0.0.0.0:8000 --workers=1 --threads=2 "
     ports:
